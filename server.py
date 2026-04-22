@@ -16,6 +16,9 @@ def sent_analyzer():
     # Pass the text to the emotion_detector function
     response = emotion_detector(text_to_analyze)
 
+    # Handle invalid input (e.g., blank text → status_code 400)
+    if  response["dominant_emotion"] is None:
+        return "Invalid text! Please try again!"
     return (
         f"For the given statement, the system response is "
         f"'anger': {response['anger']}, "
